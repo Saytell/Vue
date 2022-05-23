@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <link rel="stylesheet" href="styles.css">
+    <title>Document</title>
+</head>
+<body>
+  <div id="content" style="display:flex ; flex-direction:column; justify-content: space-between;align-items: flex-start; width: 100%; height: 100%; ">
+    <div class="header">
+      <div class="header_content">
+        <a href="#"v-on:click="visible_all = false">Главная</a>
+        <a href="#"v-on:click="visible_all = true">Таблицы</a>
+        <a href="#">Справка</a>
+      </div>
+      <div class="search">
+        <input type="text">
+        <button>Поиск</button>
+      </div>
+    </div>
+    
+    <div class="content" v-show="visible_all">
+      <div class="menu">
+        <div class="menu_title" >Выберете таблицу</div>
+        <div class="menu_content">
+          <a href="#"v-on:click="visible1=!visible1,visible = true, visible2 = false, visible3 = false ">{{visible1?'Расходы':'Расходы'}}</a>
+          <a href="#" v-on:click="visible2=!visible2,visible = true, visible1 = false, visible3 = false ">{{visible2?'Доходы':'Доходы'}}</a>
+          <a href="#" v-on:click="visible3=!visible3,visible = true, visible1 = false, visible2 = false ">{{visible3?'Пользователи':'Пользователи'}}</a>
+        </div>
+      </div>
+    
+      <div class="main">
+        <select class="filter " v-show="visible">
+          <option value="">Фильтры</option>
+          <option value="">1</option>
+          <option value="">2</option>
+          <option value="">3</option>
+        </select>
+        <table v-show ="visible1">
+          <tr>
+            <th>Член семьи</th>
+            <th>Вид заработка</th>
+            <th>Сумма за месяц</th>
+            <th>Остаток за прошлый месяц</th>
+            <th>Итого</th>
+            </tr>
+            <tr>
+            <td>Мама</td>
+            <td>Врач</td>
+            <td>20000</td>
+            <td>5000</td>
+            <td>25000</td>
+            </tr>
+          <tr>
+            <td>Папа</td>
+            <td>Адвокат</td>
+            <td>50000</td>
+            <td>15000</td>
+            <td>65000</td>
+            </tr>
+          <tr>
+            <td>Сын</td>
+            <td>Стипендия,случайная работа</td>
+            <td>12000</td>
+            <td>2000</td>
+            <td>14000</td>
+            </tr>
+          <tr>
+            <td>Дочь</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+          </tr>
+          </table>
+        <table v-show ="visible2">
+          <tr>
+            <th>Член семьи</th>
+            <th>Категория растрат</th>
+            <th>Сумма за месяц</th>
+            </tr>
+            <tr>
+            <td>Мама</td>
+            <td>Продукты</td>
+            <td>10000</td>
+            </tr>
+          <tr>
+            <td>Папа</td>
+            <td>Кредит</td>
+            <td>25000</td>
+            </tr>
+          <tr>
+            <td>Сын</td>
+            <td>Канцелярия, развлечения</td>
+            <td>5000</td>
+            </tr>
+          <tr>
+            <td>Дочь</td>
+            <td>-</td>
+            <td>-</td>
+          </tr>
+          </table>
+        <table v-show ="visible3">
+          <tr>
+            <th>Член семьи</th>
+            <th>ФИО</th>
+            </tr>
+            <tr>
+            <td>Мама</td>
+            <td>Никитина Ирина Андреевна</td>
+            </tr>
+          <tr>
+            <td>Папа</td>
+            <td>Никитин Константин Павлович</td>
+            </tr>
+          <tr>
+            <td>Сын</td>
+            <td>Никитин Михаил Константинович</td>
+            </tr>
+          <tr>
+            <td>Дочь</td>
+            <td>Никитина Раиса Константиновна</td>
+          </tr>
+          </table>
+      </div>
+    </div>
+  </div>
+  
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  <script>
+
+    var app = new Vue({
+      el: '#content',
+      data: {
+        visible_all: false,
+        visible: false,
+        visible1: false,
+        visible2: false,
+        visible3: false
+      }
+  })
+  </script>
+</body>
+</html>
